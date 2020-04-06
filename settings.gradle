@@ -1,0 +1,3 @@
+rootProject.name='MYUI_demo'
+include ':app'
+include ':myui'

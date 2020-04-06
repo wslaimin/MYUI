@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/set_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:text="setTextSize"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/set_text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:text="setTextColor"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/set_index_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:text="setIndexColor"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/set_space"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:text="setSpace"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+        <com.lm.myui.widget.MyIndexBar
+            android:id="@+id/bar"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            app:indexColor="#FFFF963C"
+            app:indexs="@array/indexs"
+            app:textColor="#FF666666"
+            app:textSize="20sp"
+            app:verticalSpace="16dp"
+            android:background="@drawable/bg_index" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:background="#991B1B1B"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="6"/>
+</FrameLayout>

@@ -1,0 +1,3 @@
+[submodule "myui/MYUI.wiki"]
+	path = myui/MYUI.wiki
+	url = https://github.com/wslaimin/MYUI.wiki.git

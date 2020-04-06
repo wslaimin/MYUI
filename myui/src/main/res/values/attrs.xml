@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--水平距离-->
+    <attr name="horizontalSpace" format="dimension"/>
+    <!--垂直距离-->
+    <attr name="verticalSpace" format="dimension"/>
+
+    <declare-styleable name="MyUnevenLayout">
+        <attr name="horizontalSpace" />
+        <attr name="verticalSpace" />
+        <!--View高度-->
+        <attr name="itemHeight" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="MyIndexBar">
+        <attr name="verticalSpace"/>
+        <!--未被选中文本颜色-->
+        <attr name="textColor" format="color"/>
+        <!--选中文本颜色-->
+        <attr name="indexColor" format="color"/>
+        <!--文本大小-->
+        <attr name="textSize" format="dimension"/>
+        <!--索引数组-->
+        <attr name="indexs" format="reference"/>
+        <!--索引位置-->
+        <attr name="android:gravity"/>
+    </declare-styleable>
+
+    <declare-styleable name="MyRound">
+        <!--左上角圆角半径-->
+        <attr name="android:topLeftRadius"/>
+        <!--右上角圆角半径-->
+        <attr name="android:topRightRadius"/>
+        <!--左下角圆角半径-->
+        <attr name="android:bottomLeftRadius"/>
+        <!--右下角圆角半径-->
+        <attr name="android:bottomRightRadius"/>
+        <!--描边颜色-->
+        <attr name="strokeColor" format="color"/>
+        <!--描边宽度-->
+        <attr name="strokeWidth" format="dimension"/>
+        <!--所有圆角半径-->
+        <attr name="radius" format="dimension"/>
+    </declare-styleable>
+</resources>

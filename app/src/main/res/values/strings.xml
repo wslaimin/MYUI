@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MYUI_demo</string>
+    <string-array name="indexs">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+    </string-array>
+</resources>
