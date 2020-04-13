@@ -54,10 +54,11 @@ public class MyPopupWindow extends PopupWindow {
 
     @Override
     public void showAsDropDown(View anchor, int xoff, int yoff, int gravity) {
-        int screenHeight = anchor.getResources().getDisplayMetrics().heightPixels;
         Rect r = new Rect();
+        anchor.getWindowVisibleDisplayFrame(r);
+        int displayHeight=r.bottom;
         anchor.getGlobalVisibleRect(r);
-        setHeight(screenHeight - r.bottom - yoff);
+        setHeight(displayHeight - r.bottom - yoff);
         restView.setBackground(restDrawable);
         super.showAsDropDown(anchor, xoff, yoff, gravity);
     }
