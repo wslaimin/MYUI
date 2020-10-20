@@ -1,45 +1,36 @@
-package com.lm.myui.widget;
+package com.lm.myui.widget.round;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import android.widget.FrameLayout;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
 
 /**
- * 圆角容器
+ * 圆角按钮
  * {@attr MyRound}
  *
  * @author TFly
  * @github https://github.com/wslaimin/MYUI.git
  */
-public class MyRoundLayout extends FrameLayout implements MyIRoundView {
+public class MyRoundButton extends AppCompatButton implements MyIRoundView{
     private MyRoundHelper roundHelper;
 
-    public MyRoundLayout(@NonNull Context context) {
-        this(context, null);
+    public MyRoundButton(Context context) {
+        this(context,null);
     }
 
-    public MyRoundLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, 0);
+    public MyRoundButton(Context context, AttributeSet attrs) {
+        this(context, attrs,0);
     }
 
-    public MyRoundLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public MyRoundButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        roundHelper = new MyRoundHelper(this, attrs);
-    }
-
-    @TargetApi(21)
-    public MyRoundLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        roundHelper = new MyRoundHelper(this, attrs);
+        roundHelper=new MyRoundHelper(this,attrs);
     }
 
     @Override
     public void draw(Canvas canvas) {
-        roundHelper.setBounds(canvas, getWidth(), getHeight());
+        roundHelper.setBounds(canvas,getWidth(),getHeight());
         super.draw(canvas);
     }
 

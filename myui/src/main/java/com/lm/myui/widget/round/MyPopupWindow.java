@@ -1,4 +1,4 @@
-package com.lm.myui.widget;
+package com.lm.myui.widget.round;
 
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -14,16 +14,11 @@ import android.widget.PopupWindow;
  * @github https://github.com/wslaimin/MYUI.git
  */
 public class MyPopupWindow extends PopupWindow {
-    private Drawable restDrawable;
     private View restView;
 
     public MyPopupWindow(View contentView) {
         // height will be set when show
         super(contentView, ViewGroup.LayoutParams.MATCH_PARENT, 0);
-    }
-
-    public void setRestDrawable(Drawable drawable) {
-        restDrawable=drawable;
     }
 
     @Override
@@ -42,14 +37,33 @@ public class MyPopupWindow extends PopupWindow {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0);
         params.weight = 1;
         restView.setLayoutParams(params);
-        restView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
+        if(isOutsideTouchable()){
+            restView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dismiss();
+                }
+            });
+        }else{
+            restView.setOnClickListener(null);
+        }
         ll.addView(restView);
         super.setContentView(ll);
+    }
+
+    @Override
+    public void setOutsideTouchable(boolean touchable) {
+        super.setOutsideTouchable(touchable);
+        if(isOutsideTouchable()){
+            restView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dismiss();
+                }
+            });
+        }else{
+            restView.setOnClickListener(null);
+        }
     }
 
     @Override
@@ -59,7 +73,6 @@ public class MyPopupWindow extends PopupWindow {
         int displayHeight=r.bottom;
         anchor.getGlobalVisibleRect(r);
         setHeight(displayHeight - r.bottom - yoff);
-        restView.setBackground(restDrawable);
         super.showAsDropDown(anchor, xoff, yoff, gravity);
     }
 }

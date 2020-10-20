@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * @author TFly
  * @github https://github.com/wslaimin/MYUI.git
  */
+
 public class MyRecyclerViewDivider extends RecyclerView.ItemDecoration {
     private Drawable drawable;
     private int horizontalSize;
@@ -31,6 +32,7 @@ public class MyRecyclerViewDivider extends RecyclerView.ItemDecoration {
 
     /**
      * 设置水平分割线高度
+     *
      * @param size 分割线高度
      */
     public void setHorizontalSize(int size) {
@@ -39,6 +41,7 @@ public class MyRecyclerViewDivider extends RecyclerView.ItemDecoration {
 
     /**
      * 获取水平分割线高度
+     *
      * @return 水平分割线高度
      */
     public int getHorizontalSize() {
@@ -47,6 +50,7 @@ public class MyRecyclerViewDivider extends RecyclerView.ItemDecoration {
 
     /**
      * 设置垂直分割线宽度
+     *
      * @param size 分割线宽度
      */
     public void setVerticalSize(int size) {
@@ -55,6 +59,7 @@ public class MyRecyclerViewDivider extends RecyclerView.ItemDecoration {
 
     /**
      * 获取垂直分割线宽度
+     *
      * @return 垂直分割线宽度
      */
     public int getVerticalSize() {
@@ -63,8 +68,10 @@ public class MyRecyclerViewDivider extends RecyclerView.ItemDecoration {
 
     @Override
     public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+        outRect.set(0, 0, 0, 0);
         RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
         int position = layoutManager.getPosition(view);
+        int orientation;
 
         if (layoutManager instanceof GridLayoutManager) {
             GridLayoutManager gridLayoutManager = (GridLayoutManager) layoutManager;
@@ -72,18 +79,24 @@ public class MyRecyclerViewDivider extends RecyclerView.ItemDecoration {
             int spanCount = gridLayoutManager.getSpanCount();
             position = gridLayoutManager.getPosition(view);
             int spanIndex = gridLayoutManager.getSpanSizeLookup().getSpanIndex(position, gridLayoutManager.getSpanCount());
-            if((spanIndex+1)%spanCount!=0){
+            int spanSize = gridLayoutManager.getSpanSizeLookup().getSpanSize(position);
+            orientation = gridLayoutManager.getOrientation();
+            int itemCount = layoutManager.getItemCount();
+            if (orientation == RecyclerView.VERTICAL && (spanIndex + spanSize) % spanCount != 0 || orientation == RecyclerView.HORIZONTAL && position < itemCount - spanCount) {
                 outRect.right = verticalSize;
             }
 
-            int lastRow = spanSizeLookup.getSpanGroupIndex(parent.getAdapter().getItemCount(), spanCount);
+            int lastRow = spanSizeLookup.getSpanGroupIndex(layoutManager.getItemCount()-1, spanCount);
             int row = spanSizeLookup.getSpanGroupIndex(position, spanCount);
-            if (row < lastRow) {
+            if (orientation == RecyclerView.VERTICAL && row < lastRow|| orientation == RecyclerView.HORIZONTAL && (spanIndex + spanSize) % spanCount != 0) {
                 outRect.bottom = horizontalSize;
             }
         } else if (layoutManager instanceof LinearLayoutManager) {
-            if (position < parent.getAdapter().getItemCount() - 1) {
+            orientation = ((LinearLayoutManager) layoutManager).getOrientation();
+            if (orientation == RecyclerView.VERTICAL && position < layoutManager.getItemCount() - 1) {
                 outRect.bottom = horizontalSize;
+            } else if (orientation == RecyclerView.HORIZONTAL && position < layoutManager.getItemCount() - 1) {
+                outRect.right = verticalSize;
             }
         } else {
             throw new UnsupportedOperationException("Only supports LinearLayoutManager and GridLayoutManager!");
@@ -92,30 +105,36 @@ public class MyRecyclerViewDivider extends RecyclerView.ItemDecoration {
 
     @Override
     public void onDraw(@NonNull Canvas c, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
-        RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
+        LinearLayoutManager layoutManager = (LinearLayoutManager) parent.getLayoutManager();
         View child;
         int left, top, right, bottom;
+        int tempSize;
 
         for (int i = 0; i < layoutManager.getChildCount(); i++) {
+            tempSize=0;
             child = layoutManager.getChildAt(i);
             if (horizontalSize != 0 && layoutManager.getDecoratedBottom(child) != child.getBottom()) {
-                left = child.getLeft();
-                right = child.getRight();
-                top = child.getBottom();
-                bottom = top + horizontalSize;
-                drawable.setBounds(left, top, right, bottom);
-                drawable.draw(c);
+                left = Math.max(child.getLeft(), parent.getPaddingLeft());
+                right = Math.min(child.getRight(), parent.getWidth() - parent.getPaddingRight());
+                top = Math.max(parent.getPaddingTop(), child.getBottom());
+                bottom = Math.min(child.getBottom() + horizontalSize, parent.getHeight() - parent.getPaddingBottom());
+                if (left < right && top < bottom) {
+                    drawable.setBounds(left, top, right, bottom);
+                    drawable.draw(c);
+                    tempSize=bottom-top;
+                }
             }
 
             if (verticalSize != 0 && layoutManager.getDecoratedRight(child) != child.getRight()) {
-                left = child.getRight();
-                right = left + verticalSize;
-                top = child.getTop();
-                bottom = child.getBottom() + horizontalSize;
-                drawable.setBounds(left, top, right, bottom);
-                drawable.draw(c);
+                left = Math.max(parent.getPaddingLeft(), child.getRight());
+                right = Math.min(child.getRight() + verticalSize, parent.getWidth() - parent.getPaddingRight());
+                top = Math.max(child.getTop(), parent.getPaddingTop());
+                bottom = Math.min(child.getBottom() + tempSize, parent.getHeight() - parent.getPaddingBottom());
+                if (left < right && top < bottom) {
+                    drawable.setBounds(left, top, right, bottom);
+                    drawable.draw(c);
+                }
             }
         }
     }
-
 }

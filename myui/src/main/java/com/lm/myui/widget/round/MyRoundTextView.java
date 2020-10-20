@@ -1,29 +1,29 @@
-package com.lm.myui.widget;
+package com.lm.myui.widget.round;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatTextView;
 
 /**
- * 圆角按钮
+ * 圆角文本
  * {@attr MyRound}
  *
  * @author TFly
  * @github https://github.com/wslaimin/MYUI.git
  */
-public class MyRoundButton extends AppCompatButton implements MyIRoundView{
+public class MyRoundTextView extends AppCompatTextView implements MyIRoundView{
     private MyRoundHelper roundHelper;
 
-    public MyRoundButton(Context context) {
+    public MyRoundTextView(Context context) {
         this(context,null);
     }
 
-    public MyRoundButton(Context context, AttributeSet attrs) {
+    public MyRoundTextView(Context context, AttributeSet attrs) {
         this(context, attrs,0);
     }
 
-    public MyRoundButton(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MyRoundTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         roundHelper=new MyRoundHelper(this,attrs);
     }

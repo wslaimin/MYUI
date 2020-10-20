@@ -1,6 +1,5 @@
 package com.lm.myui_demo;
 
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,7 +7,7 @@ import android.view.View;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import com.lm.myui.widget.MyPopupWindow;
+import com.lm.myui.widget.round.MyPopupWindow;
 
 public class MyPopActivity extends AppCompatActivity {
     MyPopupWindow pop;
@@ -29,8 +28,7 @@ public class MyPopActivity extends AppCompatActivity {
         pop.setFocusable(true);
         pop.setOutsideTouchable(true);
         pop.setTouchable(true);
-        pop.setTouchModal(false);
-        pop.setRestDrawable(new ColorDrawable(Color.parseColor("#991B1B1B")));
+        pop.setBackgroundDrawable(new ColorDrawable(0x7F000000));
     }
 
     public void onClick(View v){

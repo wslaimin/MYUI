@@ -5,35 +5,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:orientation="horizontal"
         android:layout_marginTop="160dp">
 
-        <com.lm.myui.widget.round.MyRoundButton
-            android:id="@+id/round_button"
+        <com.lm.myui.widget.round.MyRoundLayout
+            android:id="@+id/round_layout"
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:radius="6dp"
             app:strokeColor="@android:color/holo_red_dark"
             app:strokeWidth="1dp"
-            android:background="@android:color/holo_blue_bright"
-            android:gravity="center"
-            android:text="button"/>
-        <com.lm.myui.widget.round.MyRoundTextView
-            android:id="@+id/round_text"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="60dp"
-            app:radius="6dp"
-            app:strokeColor="@android:color/holo_red_dark"
-            app:strokeWidth="1dp"
-            android:background="@android:color/holo_blue_bright"
-            android:gravity="center"
-            android:text="text"/>
-    </LinearLayout>
+            android:background="@android:color/holo_blue_bright">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@android:color/holo_blue_dark"
+                android:text="123" />
+        </com.lm.myui.widget.round.MyRoundLayout>
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

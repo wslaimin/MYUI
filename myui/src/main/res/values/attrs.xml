@@ -8,22 +8,22 @@
     <declare-styleable name="MyUnevenLayout">
         <attr name="horizontalSpace" />
         <attr name="verticalSpace" />
-        <!--View高度-->
-        <attr name="itemHeight" format="dimension"/>
     </declare-styleable>
 
     <declare-styleable name="MyIndexBar">
         <attr name="verticalSpace"/>
         <!--未被选中文本颜色-->
-        <attr name="textColor" format="color"/>
+        <attr name="unSelectedColor" format="color"/>
         <!--选中文本颜色-->
-        <attr name="indexColor" format="color"/>
+        <attr name="selectedColor" format="color"/>
         <!--文本大小-->
-        <attr name="textSize" format="dimension"/>
+        <attr name="android:textSize"/>
         <!--索引数组-->
         <attr name="indexs" format="reference"/>
         <!--索引位置-->
         <attr name="android:gravity"/>
+        <!--标识颜色-->
+        <attr name="indicatorColor" format="color"/>
     </declare-styleable>
 
     <declare-styleable name="MyRound">

@@ -9,33 +9,24 @@
         android:id="@+id/uneven"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:itemHeight="30dp"
         app:horizontalSpace="10dp"
         app:verticalSpace="10dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="text1"
-            android:background="@color/colorPrimary"/>
-
-        <TextView
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:text="text2"
-            android:background="@color/colorPrimary"/>
-
-        <TextView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:text="text3"
-            android:background="@color/colorPrimary"/>
+        <com.lm.myui.widget.round.MyRoundTextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            app:radius="20px"
+            android:background="#CCCCCC"
+            android:textColor="#888888"
+            android:text="Shakespeare"/>
 
     </com.lm.myui.widget.MyUnevenLayout>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="add"
-        android:onClick="onClick"/>
+        android:onClick="onClick"
+        android:text="add" />
 </LinearLayout>
