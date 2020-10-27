@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<examples xmlns:android="http://schemas.android.com/apk/res/android">
+<examples>
     <example>
         <drawable>icon_index</drawable>
         <text>索引</text>
@@ -51,5 +51,10 @@
         <drawable>icon_guide</drawable>
         <text>新手引导</text>
         <activity>com.lm.myui_demo.MyGuideActivity</activity>
+    </example>
+    <example>
+        <drawable>icon_account</drawable>
+        <text>账号管理</text>
+        <activity>com.lm.myui_demo.account.MyAccountActivity</activity>
     </example>
 </examples>
