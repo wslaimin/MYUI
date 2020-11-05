@@ -9,10 +9,12 @@ import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.ParameterSpec;
 import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeSpec;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Filer;
 import javax.annotation.processing.Messager;
@@ -204,7 +206,7 @@ public class AutoTokenProcessor extends AbstractProcessor {
                     .addModifiers(Modifier.STATIC);
 
             TypeSpec autoToken;
-            if(receiveResult) {
+            if (receiveResult) {
                 sb.setLength(0);
                 sb.append(autoTokenMethod.name).append("(");
                 List<ParameterSpec> ps = autoTokenMethod.parameters;
@@ -232,7 +234,7 @@ public class AutoTokenProcessor extends AbstractProcessor {
                         .addMethod(addAccount)
                         .addMethod(onResultMethod)
                         .build();
-            }else{
+            } else {
                 autoToken = TypeSpec.classBuilder(classElement.getSimpleName() + "WithAutoToken")
                         .addModifiers(Modifier.PUBLIC)
                         .addMethod(autoTokenMethod)
@@ -253,10 +255,11 @@ public class AutoTokenProcessor extends AbstractProcessor {
     }
 
     private int parentType(TypeElement typeElement) {
-        String className = typeElement.getQualifiedName().toString();
         if (typeElement == null) {
             return 0;
-        } else if ("android.app.Activity".equals(className)) {
+        }
+        String className = typeElement.getQualifiedName().toString();
+        if ("android.app.Activity".equals(className)) {
             return 1;
         } else if ("androidx.fragment.app.Fragment".equals(className) || "android.app.Fragment".equals(className)) {
             return 2;
