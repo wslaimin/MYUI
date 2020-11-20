@@ -4,4 +4,6 @@
         android:title="vertical" />
     <item android:id="@+id/horizontal"
         android:title="horizontal" />
+    <item android:id="@+id/type"
+        android:title="grid"/>
 </menu>

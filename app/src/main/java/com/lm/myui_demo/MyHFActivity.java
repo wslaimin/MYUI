@@ -6,35 +6,93 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.airbnb.lottie.LottieAnimationView;
 import com.lm.myui.widget.recycler.MyBaseAdapter;
-import com.lm.myui.widget.recycler.MyViewHolder;
 import com.lm.myui.widget.recycler.MyRecyclerViewDivider;
-import com.lm.myui.widget.recycler.hf.MyHFLayout;
+import com.lm.myui.widget.recycler.MyViewHolder;
+import com.lm.myui.widget.recycler.hf.MyBaseHFLayout;
+import com.lm.myui.widget.recycler.hf.MyHFRecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MyHFActivity extends AppCompatActivity {
-    private MyHFLayout hfLayout;
+    private MyHFRecyclerView hfLayout;
+    private List<String> list;
+    private Adapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_recycler_load);
-        final RecyclerView recyclerView=findViewById(R.id.recycler);
-        final List<String> list=new ArrayList<>();
+        hfLayout=findViewById(R.id.hf);
+
+        LayoutInflater inflater=LayoutInflater.from(this);
+        final LottieAnimationView header=(LottieAnimationView) inflater.inflate(R.layout.header,hfLayout,false);
+        hfLayout.setHeader(header);
+        final LottieAnimationView footer=(LottieAnimationView) inflater.inflate(R.layout.footer,hfLayout,false);
+        hfLayout.setFooter(footer);
+
+        hfLayout.setMaxHeaderScrollExtent(500);
+
+        hfLayout.setHFListener(new MyBaseHFLayout.MyHFListener() {
+            @Override
+            public void onRefresh() {
+                if(!header.isAnimating()){
+                    header.playAnimation();
+                }
+                hfLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        header.cancelAnimation();
+                        hfLayout.completeRefresh();
+                    }
+                },2000);
+            }
+
+            @Override
+            public void onLoadMore() {
+                if(!footer.isAnimating()){
+                    footer.playAnimation();
+                }
+                hfLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        for(int i=0;i<6;i++){
+                            list.add("test"+(i+6));
+                            adapter.notifyDataSetChanged();
+                        }
+                        footer.cancelAnimation();
+                        hfLayout.completeLoadMore();
+                    }
+                },2000);
+            }
+        });
+
+        hfLayout.setPullListener(new MyBaseHFLayout.MyPullListener() {
+            @Override
+            public void pullHeader() {
+                float progress=hfLayout.getHeaderVisibleHeight()*1f/hfLayout.getMaxHeaderScrollExtent();
+                header.setProgress(progress);
+            }
+
+            @Override
+            public void pullFooter() {
+
+            }
+        });
+        final RecyclerView recyclerView=hfLayout.getNestedView();
+        list=new ArrayList<>();
         for(int i=0;i<60;i++){
             list.add("test "+i);
         }
-        recyclerView.setAdapter(new Adapter(list));
+        adapter=new Adapter(list);
+        recyclerView.setAdapter(adapter);
         GridLayoutManager layoutManager=new GridLayoutManager(this,3);
         layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
@@ -50,57 +108,25 @@ public class MyHFActivity extends AppCompatActivity {
         divider.setHorizontalSize(20);
         divider.setVerticalSize(20);
         recyclerView.addItemDecoration(divider);
-
-        hfLayout=findViewById(R.id.hf);
-        View header= LayoutInflater.from(this).inflate(R.layout.item,recyclerView,false);
-        header.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,120));
-        header.setBackgroundColor(Color.YELLOW);
-        hfLayout.setHeader(header);
-        View footer=LayoutInflater.from(this).inflate(R.layout.item,recyclerView,false);
-        footer.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,120));
-        footer.setBackgroundColor(Color.YELLOW);
-        hfLayout.setFooter(footer);
-
-        hfLayout.setLoadListener(new MyHFLayout.HFListener() {
-            @Override
-            public void onRefresh() {
-                Toast.makeText(getApplication(),"refresh",Toast.LENGTH_LONG).show();
-                recyclerView.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        hfLayout.completeRefresh();
-                    }
-                },2000);
-            }
-
-            @Override
-            public void onLoadMore() {
-                for(int i=0;i<10;i++){
-                    list.add("test"+(list.size()+i));
-                }
-                recyclerView.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        recyclerView.getAdapter().notifyDataSetChanged();
-                        hfLayout.completeLoadMore();
-                    }
-                },2000);
-            }
-        });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.refresh,menu);
+        inflater.inflate(R.menu.hf,menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.refresh:
-                hfLayout.callRefresh();
+            case R.id.enable_refresh:
+                hfLayout.enableHeader(!hfLayout.isHeaderEnable());
+                item.setTitle(hfLayout.isHeaderEnable() ? "disable refresh" : "enable refresh");
+                return true;
+            case R.id.enable_more:
+                hfLayout.enableFooter(!hfLayout.isFooterEnable());
+                item.setTitle(hfLayout.isFooterEnable() ? "disable more" : "enable more");
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -36,6 +36,7 @@
         <activity android:name=".MyGuideActivity"/>
         <activity android:name=".account.MyAccountActivity"/>
         <activity android:name=".account.MyLoginActivity"/>
+        <activity android:name=".MaterialActivity"/>
 
         <service android:name=".account.MyService">
             <intent-filter>
