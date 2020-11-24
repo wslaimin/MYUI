@@ -188,13 +188,15 @@ public abstract class MyBaseHFLayout<T extends View> extends FrameLayout impleme
      * call refreshing manually
      */
     public void callRefresh() {
-        stopNestedViewScroll();
-        headerAnimation.stop();
-        extraScroll(0);
-        nestedView.scrollBy(0, -nestedViewScrollHeight);
-        scrollTo(0, -getHeaderHeight() - 1);
-        headerVisibleHeight = getHeaderHeight() + 1;
-        headerAnimation.start(1, 1);
+        if(headerEnable) {
+            stopNestedViewScroll();
+            headerAnimation.stop();
+            extraScroll(0);
+            nestedView.scrollBy(0, -nestedViewScrollHeight);
+            scrollTo(0, -getHeaderHeight() - 1);
+            headerVisibleHeight = getHeaderHeight() + 1;
+            headerAnimation.start(1, 1);
+        }
     }
 
     @Override
