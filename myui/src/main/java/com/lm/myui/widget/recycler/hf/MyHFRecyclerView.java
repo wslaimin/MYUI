@@ -4,6 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewParent;
+import android.view.animation.LinearInterpolator;
+
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.appbar.AppBarLayout;
@@ -80,6 +82,14 @@ public class MyHFRecyclerView extends MyBaseHFLayout<RecyclerView> {
     @Override
     protected void stopNestedViewScroll() {
         getNestedView().stopScroll();
+    }
+
+    @Override
+    protected void extraScroll(int dy) {
+        if(behavior!=null){
+            behavior.setTopAndBottomOffset(dy);
+            requestLayout();
+        }
     }
 
     @Override

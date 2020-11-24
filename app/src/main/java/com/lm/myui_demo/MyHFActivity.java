@@ -120,6 +120,9 @@ public class MyHFActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
+            case R.id.call_refresh:
+                hfLayout.callRefresh();
+                return true;
             case R.id.enable_refresh:
                 hfLayout.enableHeader(!hfLayout.isHeaderEnable());
                 item.setTitle(hfLayout.isHeaderEnable() ? "disable refresh" : "enable refresh");

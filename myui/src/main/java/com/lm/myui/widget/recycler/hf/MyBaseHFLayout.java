@@ -16,6 +16,7 @@ import androidx.core.view.ViewCompat;
 /**
  * This class provides ability of refresh and load more for nested View that implements {@link NestedScrollingChild}.
  * Compatible with material design widgets.
+ *
  * @param <T> nested view type
  */
 public abstract class MyBaseHFLayout<T extends View> extends FrameLayout implements NestedScrollingParent2 {
@@ -30,6 +31,7 @@ public abstract class MyBaseHFLayout<T extends View> extends FrameLayout impleme
     private boolean footerEnable = true;
     private int headerVisibleHeight;
     private int footerVisibleHeight;
+    private int nestedViewScrollHeight;
     private int headerState;
     private int footerState;
     private final NestedScrollingChildHelper scrollingChildHelper;
@@ -61,7 +63,6 @@ public abstract class MyBaseHFLayout<T extends View> extends FrameLayout impleme
     }
 
     /**
-     *
      * @return header view
      */
     public View getHeader() {
@@ -69,7 +70,6 @@ public abstract class MyBaseHFLayout<T extends View> extends FrameLayout impleme
     }
 
     /**
-     *
      * @return footer view
      */
     public View getFooter() {
@@ -77,7 +77,6 @@ public abstract class MyBaseHFLayout<T extends View> extends FrameLayout impleme
     }
 
     /**
-     *
      * @return nested scroll target
      */
     public T getNestedView() {
@@ -86,6 +85,7 @@ public abstract class MyBaseHFLayout<T extends View> extends FrameLayout impleme
 
     /**
      * enable or disable header
+     *
      * @param bool true for enable header
      */
     public void enableHeader(boolean bool) {
@@ -98,6 +98,7 @@ public abstract class MyBaseHFLayout<T extends View> extends FrameLayout impleme
 
     /**
      * enable or disable footer
+     *
      * @param bool true for enable footer
      */
     public void enableFooter(boolean bool) {
@@ -109,7 +110,6 @@ public abstract class MyBaseHFLayout<T extends View> extends FrameLayout impleme
     }
 
     /**
-     *
      * @return true if header is enable
      */
     public boolean isHeaderEnable() {
@@ -117,7 +117,6 @@ public abstract class MyBaseHFLayout<T extends View> extends FrameLayout impleme
     }
 
     /**
-     *
      * @return true if footer is enable
      */
     public boolean isFooterEnable() {
@@ -134,7 +133,7 @@ public abstract class MyBaseHFLayout<T extends View> extends FrameLayout impleme
             scrollBy(0, headerVisibleHeight);
             headerVisibleHeight = 0;
         }
-        nestedView.scrollTo(0, 0);
+        nestedView.scrollBy(0, -nestedViewScrollHeight);
     }
 
     /**
@@ -152,6 +151,7 @@ public abstract class MyBaseHFLayout<T extends View> extends FrameLayout impleme
 
     /**
      * register a callback to be invoked when refreshing or loading more
+     *
      * @param listener the callback that will run
      */
     public void setHFListener(MyHFListener listener) {
@@ -160,6 +160,7 @@ public abstract class MyBaseHFLayout<T extends View> extends FrameLayout impleme
 
     /**
      * register a callback to be invoked when pull header/footer down or up
+     *
      * @param listener
      */
     public void setPullListener(MyPullListener listener) {
@@ -167,7 +168,6 @@ public abstract class MyBaseHFLayout<T extends View> extends FrameLayout impleme
     }
 
     /**
-     *
      * @return header scroll range
      */
     public int getMaxHeaderScrollExtent() {
@@ -178,11 +178,23 @@ public abstract class MyBaseHFLayout<T extends View> extends FrameLayout impleme
     }
 
     /**
-     *
      * @return header visible height now
      */
     public int getHeaderVisibleHeight() {
         return headerVisibleHeight;
+    }
+
+    /**
+     * call refreshing manually
+     */
+    public void callRefresh() {
+        stopNestedViewScroll();
+        headerAnimation.stop();
+        extraScroll(0);
+        nestedView.scrollBy(0, -nestedViewScrollHeight);
+        scrollTo(0, -getHeaderHeight() - 1);
+        headerVisibleHeight = getHeaderHeight() + 1;
+        headerAnimation.start(1, 1);
     }
 
     @Override
@@ -243,6 +255,7 @@ public abstract class MyBaseHFLayout<T extends View> extends FrameLayout impleme
 
     @Override
     public void onNestedScroll(@NonNull View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed, int type) {
+        nestedViewScrollHeight += dyConsumed;
         int remainY;
         int consumedY;
         if (dyUnconsumed < 0 && headerEnable) {
@@ -302,7 +315,7 @@ public abstract class MyBaseHFLayout<T extends View> extends FrameLayout impleme
                 footerVisibleHeight += consumedY;
                 scrollBy(0, consumedY);
 
-                if(pullListener!=null){
+                if (pullListener != null) {
                     pullListener.pullFooter();
                 }
             }
@@ -327,24 +340,28 @@ public abstract class MyBaseHFLayout<T extends View> extends FrameLayout impleme
 
     /**
      * subclass provides header view
+     *
      * @return header view
      */
     protected abstract View createHeader();
 
     /**
      * subclass provides footer view
+     *
      * @return footer view
      */
     protected abstract View createFooter();
 
     /**
      * subclass provides nested scroll view
+     *
      * @return nested view
      */
     protected abstract T createNestedView();
 
     /**
      * height left to show header(for example,use with AppBarLayout)
+     *
      * @return height left now
      */
     protected abstract int getExtraHeight();
@@ -353,6 +370,8 @@ public abstract class MyBaseHFLayout<T extends View> extends FrameLayout impleme
      * subclass implements for stop nest view scroll
      */
     protected abstract void stopNestedViewScroll();
+
+    protected abstract void extraScroll(int dy);
 
     private int getHeaderHeight() {
         if (header != null) {
