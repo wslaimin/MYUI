@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/hideable"
+        android:contentDescription="hideable"
+        android:title="hideable:true" />
+
+    <item
+        android:id="@+id/peek_height"
+        android:contentDescription="peekHeight:default"
+        android:title="peekHeight:120dp" />
+
+    <item
+        android:id="@+id/skip_collapsed"
+        android:title="skipCollapsed:true"
+        android:contentDescription="skipCollapsed"/>
+</menu>

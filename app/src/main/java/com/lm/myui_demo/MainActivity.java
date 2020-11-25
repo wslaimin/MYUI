@@ -21,13 +21,13 @@ public class MainActivity extends AppCompatActivity {
         divider.setHorizontalSize(16);
         divider.setVerticalSize(16);
         recyclerView.addItemDecoration(divider);
-        MyAdapter adapter=null;
+        MyExampleAdapter adapter=null;
         ArrayList<MyExampleItem> list=getIntent().getParcelableArrayListExtra("children");
         if(list!=null){
-            adapter=new MyAdapter(list);
+            adapter=new MyExampleAdapter(list);
         }else{
             try {
-                adapter=new MyAdapter(MyXmlParser.parse(this));
+                adapter=new MyExampleAdapter(MyXmlParser.parse(this));
             } catch (Exception e) {
                 e.printStackTrace();
             }

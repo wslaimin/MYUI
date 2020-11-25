@@ -36,7 +36,13 @@
         <activity android:name=".MyGuideActivity"/>
         <activity android:name=".account.MyAccountActivity"/>
         <activity android:name=".account.MyLoginActivity"/>
-        <activity android:name=".MaterialActivity"/>
+        <activity android:name=".material.MaterialActivity"/>
+        <activity android:name=".material.MyBottomAppBarActivity"
+            android:theme="@style/Theme.MaterialComponents.Light"/>
+        <activity android:name=".material.MyBottomNavigationActivity"
+            android:theme="@style/Theme.MaterialComponents.Light"/>
+        <activity android:name=".material.MyBottomSheetBehaviorActivity"/>
+        <activity android:name=".material.MyBottomSheetDialogActivity"/>
 
         <service android:name=".account.MyService">
             <intent-filter>

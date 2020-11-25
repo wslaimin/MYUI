@@ -6,25 +6,23 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.airbnb.lottie.LottieAnimationView;
-import com.lm.myui.widget.recycler.MyBaseAdapter;
 import com.lm.myui.widget.recycler.MyRecyclerViewDivider;
-import com.lm.myui.widget.recycler.MyViewHolder;
 import com.lm.myui.widget.recycler.hf.MyBaseHFLayout;
 import com.lm.myui.widget.recycler.hf.MyHFRecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MyHFActivity extends AppCompatActivity {
     private MyHFRecyclerView hfLayout;
     private List<String> list;
-    private Adapter adapter;
+    private MyAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -91,7 +89,7 @@ public class MyHFActivity extends AppCompatActivity {
         for(int i=0;i<60;i++){
             list.add("test "+i);
         }
-        adapter=new Adapter(list);
+        adapter=new MyAdapter(list);
         recyclerView.setAdapter(adapter);
         GridLayoutManager layoutManager=new GridLayoutManager(this,3);
         layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
@@ -133,35 +131,6 @@ public class MyHFActivity extends AppCompatActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
-        }
-    }
-
-    static class Adapter extends MyBaseAdapter<List<String>> {
-
-        Adapter(List<String> data) {
-            super(data);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-            TextView textView=holder.findViewById(R.id.text);
-            textView.setText(data.get(position));
-        }
-
-        @Override
-        public int getLayoutId(int viewType) {
-            if(viewType==0){
-                return R.layout.item;
-            }
-            return R.layout.item_big;
-        }
-
-        @Override
-        public int getItemViewType(int position) {
-            if(position==3){
-                return 1;
-            }
-            return 0;
         }
     }
 }

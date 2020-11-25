@@ -1,4 +1,4 @@
-package com.lm.myui_demo;
+package com.lm.myui_demo.material;
 
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import com.lm.myui.widget.recycler.MyBaseAdapter;
 import com.lm.myui.widget.recycler.MyViewHolder;
+import com.lm.myui_demo.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
