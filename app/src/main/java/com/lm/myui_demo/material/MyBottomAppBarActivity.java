@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomappbar.BottomAppBar;
@@ -24,6 +25,7 @@ import java.util.List;
 public class MyBottomAppBarActivity extends AppCompatActivity {
     private ShapeAppearanceModel alternativeShapeModel;
     private Drawable alternativeBg;
+    private float alternativeEvaluation;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class MyBottomAppBarActivity extends AppCompatActivity {
 
         final BottomAppBar bottomAppBar = findViewById(R.id.bottom_bar);
         final FloatingActionButton button = findViewById(R.id.button);
+        alternativeEvaluation = 0;
         bottomAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -64,6 +67,10 @@ public class MyBottomAppBarActivity extends AppCompatActivity {
                         ShapeAppearanceModel tempModel = button.getShapeAppearanceModel();
                         button.setShapeAppearanceModel(alternativeShapeModel);
                         alternativeShapeModel = tempModel;
+
+                        float tempEvaluation = ViewCompat.getElevation(button);
+                        ViewCompat.setElevation(button, alternativeEvaluation);
+                        alternativeEvaluation = tempEvaluation;
 
                         if (alternativeBg == null) {
                             float size = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 32, getResources().getDisplayMetrics());
