@@ -6,7 +6,6 @@ import com.google.android.material.shape.ShapePath;
 
 public class MyPyramidEdgeTreatment extends EdgeTreatment {
     private float size;
-    private boolean inverted;
 
     public float getSize() {
         return size;
@@ -14,14 +13,6 @@ public class MyPyramidEdgeTreatment extends EdgeTreatment {
 
     public void setSize(float size) {
         this.size = size;
-    }
-
-    public boolean isInverted() {
-        return inverted;
-    }
-
-    public void setInverted(boolean inverted) {
-        this.inverted = inverted;
     }
 
     //positive direction is edge point to view inside
