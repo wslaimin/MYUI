@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
             adapter=new MyExampleAdapter(list);
         }else{
             try {
-                adapter=new MyExampleAdapter(MyXmlParser.parse(this));
+                MyExampleItem root=MyXmlParser.parse(this);
+                adapter=new MyExampleAdapter(root.children);
             } catch (Exception e) {
                 e.printStackTrace();
             }

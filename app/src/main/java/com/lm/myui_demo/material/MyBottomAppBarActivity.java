@@ -60,7 +60,6 @@ public class MyBottomAppBarActivity extends AppCompatActivity {
 
                             MyPyramidEdgeTreatment pyramidEdgeTreatment2 = new MyPyramidEdgeTreatment();
                             pyramidEdgeTreatment2.setSize(button.getHeight());
-                            pyramidEdgeTreatment2.setInverted(true);
                             alternativeShapeModel = new ShapeAppearanceModel.Builder().setTopEdge(pyramidEdgeTreatment1).setBottomEdge(pyramidEdgeTreatment2).build();
                         }
 

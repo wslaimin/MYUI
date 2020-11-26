@@ -1,68 +1,63 @@
 package com.lm.myui_demo;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.XmlResourceParser;
-import android.view.View;
 import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Stack;
 
 public class MyXmlParser {
-    static List<MyExampleItem> parse(final Context context) throws IOException, XmlPullParserException {
-        List<MyExampleItem> list = new ArrayList<>();
-        String name;
-        MyExampleItem item = null;
-        MyExampleItem child = null;
+    static MyExampleItem parse(Context context) throws IOException, XmlPullParserException {
+        Stack<MyExampleItem> stack = new Stack<>();
         final XmlResourceParser parser = context.getResources().getXml(R.xml.examples);
         int type;
-        int deep = 0;
+        String name;
+        MyExampleItem exampleItem = null;
+        boolean pushed=false;
         while ((type = parser.next()) != XmlResourceParser.END_DOCUMENT) {
             name = parser.getName();
             if ("example".equals(name)) {
                 if (type == XmlResourceParser.START_TAG) {
-                    deep++;
-                    item = new MyExampleItem();
-                    list.add(item);
-                } else {
-                    deep--;
-                    if(item.children!=null){
-                        final ArrayList<MyExampleItem> children = new ArrayList<>();
-                        children.addAll(item.children);
-                        item.activity=MainActivity.class.getName();
-                    }
+                    exampleItem = new MyExampleItem();
+                    pushed = false;
+                } else if (type == XmlResourceParser.END_TAG && !pushed) {
+                    stack.push(exampleItem);
+                    pushed=true;
                 }
             } else if ("children".equals(name)) {
                 if (type == XmlResourceParser.START_TAG) {
-                    deep++;
-                    item.children = new ArrayList<>();
-                } else {
-                    deep--;
+                    exampleItem.flag = 1;
+                    exampleItem.activity=MainActivity.class.getName();
+                    stack.push(exampleItem);
+                    pushed = true;
+                } else if (type == XmlResourceParser.END_TAG) {
+                    MyExampleItem parentItem = null;
+                    List<MyExampleItem> children = new ArrayList<>();
+                    while (stack.size() > 0) {
+                        MyExampleItem item = stack.pop();
+                        if (item.flag == 1) {
+                            parentItem = item;
+                            break;
+                        }
+                        children.add(item);
+                    }
+                    Collections.reverse(children);
+                    parentItem.children = children;
+                    parentItem.flag = 0;
+                    stack.push(parentItem);
                 }
-            } else if ("child".equals(name) && type == XmlResourceParser.START_TAG) {
-                child = new MyExampleItem();
-                item.children.add(child);
             } else if ("drawable".equals(name)) {
-                if (deep == 1) {
-                    item.drawable = context.getResources().getIdentifier(parser.nextText(), "drawable", context.getPackageName());
-                } else {
-                    child.drawable = context.getResources().getIdentifier(parser.nextText(), "drawable", context.getPackageName());
-                }
+                exampleItem.drawable = context.getResources().getIdentifier(parser.nextText(), "drawable", context.getPackageName());
             } else if ("text".equals(name)) {
-                if (deep == 1) {
-                    item.text = parser.nextText();
-                } else {
-                    child.text = parser.nextText();
-                }
+                exampleItem.text = parser.nextText();
             } else if ("activity".equals(name)) {
-                if (deep == 1) {
-                    item.activity=parser.nextText();
-                } else {
-                    child.activity=parser.nextText();
-                }
+                exampleItem.activity = parser.nextText();
+                System.out.println("123");
             }
         }
-        return list;
+        return stack.pop();
     }
 }

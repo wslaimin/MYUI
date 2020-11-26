@@ -9,14 +9,17 @@ public class MyExampleItem implements Parcelable {
     String text;
     String activity;
     List<MyExampleItem> children;
+    int flag;
 
-    public MyExampleItem(){}
+    public MyExampleItem() {
+    }
 
     protected MyExampleItem(Parcel in) {
         drawable = in.readInt();
         text = in.readString();
         activity = in.readString();
         children = in.createTypedArrayList(MyExampleItem.CREATOR);
+        flag = in.readInt();
     }
 
     public static final Creator<MyExampleItem> CREATOR = new Creator<MyExampleItem>() {
@@ -42,5 +45,6 @@ public class MyExampleItem implements Parcelable {
         dest.writeString(text);
         dest.writeString(activity);
         dest.writeTypedList(children);
+        dest.writeInt(flag);
     }
 }
