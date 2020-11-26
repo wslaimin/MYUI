@@ -11,6 +11,7 @@
     <uses-permission
         android:name="android.permission.USE_CREDENTIALS"
         android:maxSdkVersion="22" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -26,23 +27,28 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MyIndexActivity"/>
-        <activity android:name=".MyPopActivity"/>
-        <activity android:name=".MyRoundActivity"/>
-        <activity android:name=".MyRoundLayoutActivity"/>
-        <activity android:name=".MyRecyclerActivity"/>
-        <activity android:name=".MyUnevenActivity"/>
-        <activity android:name=".MyHFActivity"/>
-        <activity android:name=".MyGuideActivity"/>
-        <activity android:name=".account.MyAccountActivity"/>
-        <activity android:name=".account.MyLoginActivity"/>
-        <activity android:name=".material.MaterialActivity"/>
-        <activity android:name=".material.MyBottomAppBarActivity"
-            android:theme="@style/Theme.MaterialComponents.Light"/>
-        <activity android:name=".material.MyBottomNavigationActivity"
-            android:theme="@style/Theme.MaterialComponents.Light"/>
-        <activity android:name=".material.MyBottomSheetBehaviorActivity"/>
-        <activity android:name=".material.MyBottomSheetDialogActivity"/>
+        <activity android:name=".MyIndexActivity" />
+        <activity android:name=".MyPopActivity" />
+        <activity android:name=".MyRoundActivity" />
+        <activity android:name=".MyRoundLayoutActivity" />
+        <activity android:name=".MyRecyclerActivity" />
+        <activity android:name=".MyUnevenActivity" />
+        <activity android:name=".MyHFActivity" />
+        <activity android:name=".MyGuideActivity" />
+        <activity android:name=".account.MyAccountActivity" />
+        <activity android:name=".account.MyLoginActivity" />
+        <activity android:name=".material.MaterialActivity" />
+        <activity
+            android:name=".material.MyBottomAppBarActivity"
+            android:theme="@style/Theme.MaterialComponents.Light" />
+        <activity
+            android:name=".material.MyBottomNavigationActivity"
+            android:theme="@style/Theme.MaterialComponents.Light" />
+        <activity android:name=".material.MyBottomSheetBehaviorActivity" />
+        <activity android:name=".material.MyBottomSheetDialogActivity" />
+        <activity
+            android:name=".material.MyButtonActivity"
+            android:theme="@style/Theme.MaterialComponents.Light" />
 
         <service android:name=".account.MyService">
             <intent-filter>

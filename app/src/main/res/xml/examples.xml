@@ -88,6 +88,11 @@
                     <text>layout</text>
                     <activity>com.lm.myui_demo.material.MaterialActivity</activity>
                 </example>
+                <example>
+                    <drawable>icon_button</drawable>
+                    <text>button</text>
+                    <activity>com.lm.myui_demo.material.MyButtonActivity</activity>
+                </example>
             </children>
         </example>
     </children>
