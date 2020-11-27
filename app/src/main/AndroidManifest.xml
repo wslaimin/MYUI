@@ -49,6 +49,12 @@
         <activity
             android:name=".material.MyButtonActivity"
             android:theme="@style/Theme.MaterialComponents.Light" />
+        <activity
+            android:name=".material.MyCardViewActivity"
+            android:theme="@style/Theme.MaterialComponents.Light" />
+        <activity
+            android:name=".material.MyChipActivity"
+            android:theme="@style/Theme.MaterialComponents.Light" />
 
         <service android:name=".account.MyService">
             <intent-filter>

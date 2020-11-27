@@ -90,8 +90,18 @@
                 </example>
                 <example>
                     <drawable>icon_button</drawable>
-                    <text>button</text>
+                    <text>Button</text>
                     <activity>com.lm.myui_demo.material.MyButtonActivity</activity>
+                </example>
+                <example>
+                    <drawable>icon_card</drawable>
+                    <text>MaterialCardView</text>
+                    <activity>com.lm.myui_demo.material.MyCardViewActivity</activity>
+                </example>
+                <example>
+                    <drawable>icon_chip</drawable>
+                    <text>Chip</text>
+                    <activity>com.lm.myui_demo.material.MyChipActivity</activity>
                 </example>
             </children>
         </example>
