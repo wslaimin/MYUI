@@ -8,6 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="DialogTheme" parent="Theme.MaterialComponents.Light">
+        <item name="dialogTheme">@style/ThemeOverlay.AppCompat.Dialog.MyDialogTheme</item>
+    </style>
+
+    <style name="ThemeOverlay.AppCompat.Dialog.MyDialogTheme">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+
     <style name="Widget.App.Button.OutlinedButton.IconOnly" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="iconPadding">0dp</item>
         <item name="android:insetTop">0dp</item>

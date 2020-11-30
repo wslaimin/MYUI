@@ -55,6 +55,8 @@
         <activity
             android:name=".material.MyChipActivity"
             android:theme="@style/Theme.MaterialComponents.Light" />
+        <activity android:name=".material.MyDialogActivity"
+            android:theme="@style/Theme.MaterialComponents.Light"/>
 
         <service android:name=".account.MyService">
             <intent-filter>

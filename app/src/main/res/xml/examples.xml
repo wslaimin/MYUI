@@ -103,6 +103,11 @@
                     <text>Chip</text>
                     <activity>com.lm.myui_demo.material.MyChipActivity</activity>
                 </example>
+                <example>
+                    <drawable>icon_dialog</drawable>
+                    <text>Dialog</text>
+                    <activity>com.lm.myui_demo.material.MyDialogActivity</activity>
+                </example>
             </children>
         </example>
     </children>
