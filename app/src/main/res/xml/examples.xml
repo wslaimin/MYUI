@@ -108,6 +108,11 @@
                     <text>Dialog</text>
                     <activity>com.lm.myui_demo.material.MyDialogActivity</activity>
                 </example>
+                <example>
+                    <drawable>icon_fab</drawable>
+                    <text>FAB</text>
+                    <activity>com.lm.myui_demo.material.MyFloatingActionButtonActivity</activity>
+                </example>
             </children>
         </example>
     </children>

@@ -38,25 +38,15 @@
         <activity android:name=".account.MyAccountActivity" />
         <activity android:name=".account.MyLoginActivity" />
         <activity android:name=".material.MaterialActivity" />
-        <activity
-            android:name=".material.MyBottomAppBarActivity"
-            android:theme="@style/Theme.MaterialComponents.Light" />
-        <activity
-            android:name=".material.MyBottomNavigationActivity"
-            android:theme="@style/Theme.MaterialComponents.Light" />
+        <activity android:name=".material.MyBottomAppBarActivity" />
+        <activity android:name=".material.MyBottomNavigationActivity" />
         <activity android:name=".material.MyBottomSheetBehaviorActivity" />
         <activity android:name=".material.MyBottomSheetDialogActivity" />
-        <activity
-            android:name=".material.MyButtonActivity"
-            android:theme="@style/Theme.MaterialComponents.Light" />
-        <activity
-            android:name=".material.MyCardViewActivity"
-            android:theme="@style/Theme.MaterialComponents.Light" />
-        <activity
-            android:name=".material.MyChipActivity"
-            android:theme="@style/Theme.MaterialComponents.Light" />
-        <activity android:name=".material.MyDialogActivity"
-            android:theme="@style/Theme.MaterialComponents.Light"/>
+        <activity android:name=".material.MyButtonActivity" />
+        <activity android:name=".material.MyCardViewActivity" />
+        <activity android:name=".material.MyChipActivity" />
+        <activity android:name=".material.MyDialogActivity" />
+        <activity android:name=".material.MyFloatingActionButtonActivity" />
 
         <service android:name=".account.MyService">
             <intent-filter>

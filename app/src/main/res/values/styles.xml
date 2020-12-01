@@ -1,20 +1,39 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="toolbarStyle">@style/toolbarStyle</item>
+        <item name="actionBarTheme">@style/actionBarTheme</item>
     </style>
 
-    <style name="DialogTheme" parent="Theme.MaterialComponents.Light">
-        <item name="dialogTheme">@style/ThemeOverlay.AppCompat.Dialog.MyDialogTheme</item>
+    <style name="actionBarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <!-- sets the color for the back arrow -->
+        <item name="colorControlNormal">@android:color/white</item>
+        <!-- sets the style for the overflow button -->
+        <item name="actionOverflowButtonStyle">@style/actionOverflowButtonStyle</item>
     </style>
 
-    <style name="ThemeOverlay.AppCompat.Dialog.MyDialogTheme">
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowBackground">@null</item>
+    <!-- This style is where you define the tint color of your overflow menu button -->
+    <style name="actionOverflowButtonStyle" parent="@style/Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">@android:color/white</item>
+    </style>
+
+    <style name="toolbarStyle" parent="@style/Widget.AppCompat.Toolbar">
+        <item name="titleTextColor">@android:color/white</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.Light.ActionBar.Solid.MenuAction">
+        <item name="actionOverflowButtonStyle">
+            @style/Widget.AppCompat.Light.ActionButton.Overflow.MenuAction
+        </item>
+    </style>
+
+    <style name="Widget.AppCompat.Light.ActionButton.Overflow.MenuAction">
+        <item name="tint">@android:color/white</item>
     </style>
 
     <style name="Widget.App.Button.OutlinedButton.IconOnly" parent="Widget.MaterialComponents.Button.OutlinedButton">
