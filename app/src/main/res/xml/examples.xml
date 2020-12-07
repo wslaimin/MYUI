@@ -113,6 +113,11 @@
                     <text>FAB</text>
                     <activity>com.lm.myui_demo.material.MyFloatingActionButtonActivity</activity>
                 </example>
+                <example>
+                    <drawable>icon_menu</drawable>
+                    <text>Menu</text>
+                    <activity>com.lm.myui_demo.material.MyMenuActivity</activity>
+                </example>
             </children>
         </example>
     </children>
