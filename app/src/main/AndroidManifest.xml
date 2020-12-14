@@ -48,6 +48,7 @@
         <activity android:name=".material.MyDialogActivity" />
         <activity android:name=".material.MyFloatingActionButtonActivity" />
         <activity android:name=".material.MyMenuActivity"/>
+        <activity android:name=".material.MyDatePickerActivity"/>
 
         <service android:name=".account.MyService">
             <intent-filter>

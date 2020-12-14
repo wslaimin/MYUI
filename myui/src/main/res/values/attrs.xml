@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--水平距离-->
-    <attr name="horizontalSpace" format="dimension"/>
+    <attr name="horizontalSpace" format="dimension" />
     <!--垂直距离-->
-    <attr name="verticalSpace" format="dimension"/>
+    <attr name="verticalSpace" format="dimension" />
 
     <declare-styleable name="MyUnevenLayout">
         <attr name="horizontalSpace" />
@@ -11,35 +11,35 @@
     </declare-styleable>
 
     <declare-styleable name="MyIndexBar">
-        <attr name="verticalSpace"/>
+        <attr name="verticalSpace" />
         <!--未被选中文本颜色-->
-        <attr name="unSelectedColor" format="color"/>
+        <attr name="unSelectedColor" format="color" />
         <!--选中文本颜色-->
-        <attr name="selectedColor" format="color"/>
+        <attr name="selectedColor" format="color" />
         <!--文本大小-->
-        <attr name="android:textSize"/>
+        <attr name="android:textSize" />
         <!--索引数组-->
-        <attr name="indexs" format="reference"/>
+        <attr name="indexs" format="reference" />
         <!--索引位置-->
-        <attr name="android:gravity"/>
+        <attr name="android:gravity" />
         <!--标识颜色-->
-        <attr name="indicatorColor" format="color"/>
+        <attr name="indicatorColor" format="color" />
     </declare-styleable>
 
     <declare-styleable name="MyRound">
         <!--左上角圆角半径-->
-        <attr name="android:topLeftRadius"/>
+        <attr name="android:topLeftRadius" />
         <!--右上角圆角半径-->
-        <attr name="android:topRightRadius"/>
+        <attr name="android:topRightRadius" />
         <!--左下角圆角半径-->
-        <attr name="android:bottomLeftRadius"/>
+        <attr name="android:bottomLeftRadius" />
         <!--右下角圆角半径-->
-        <attr name="android:bottomRightRadius"/>
+        <attr name="android:bottomRightRadius" />
         <!--描边颜色-->
-        <attr name="strokeColor" format="color"/>
+        <attr name="strokeColor" format="color" />
         <!--描边宽度-->
-        <attr name="strokeWidth" format="dimension"/>
+        <attr name="strokeWidth" format="dimension" />
         <!--所有圆角半径-->
-        <attr name="radius" format="dimension"/>
+        <attr name="radius" format="dimension" />
     </declare-styleable>
 </resources>

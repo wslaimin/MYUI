@@ -118,6 +118,11 @@
                     <text>Menu</text>
                     <activity>com.lm.myui_demo.material.MyMenuActivity</activity>
                 </example>
+                <example>
+                    <drawable>icon_date</drawable>
+                    <text>MaterialDatePicker</text>
+                    <activity>com.lm.myui_demo.material.MyDatePickerActivity</activity>
+                </example>
             </children>
         </example>
     </children>
