@@ -128,6 +128,11 @@
                     <text>RadioButton</text>
                     <activity>com.lm.myui_demo.material.MyRadioButtonActivity</activity>
                 </example>
+                <example>
+                    <drawable>icon_slider</drawable>
+                    <text>Slider</text>
+                    <activity>com.lm.myui_demo.material.MySliderActivity</activity>
+                </example>
             </children>
         </example>
     </children>
