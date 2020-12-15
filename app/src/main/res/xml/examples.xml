@@ -143,6 +143,11 @@
                     <text>Switch</text>
                     <activity>com.lm.myui_demo.material.MySwitchActivity</activity>
                 </example>
+                <example>
+                    <drawable>icon_tab</drawable>
+                    <text>TabLayout</text>
+                    <activity>com.lm.myui_demo.material.MyTabLayoutActivity</activity>
+                </example>
             </children>
         </example>
     </children>

@@ -53,6 +53,7 @@
         <activity android:name=".material.MySliderActivity"/>
         <activity android:name=".material.MySnackbarActivity"/>
         <activity android:name=".material.MySwitchActivity"/>
+        <activity android:name=".material.MyTabLayoutActivity"/>
 
         <service android:name=".account.MyService">
             <intent-filter>
