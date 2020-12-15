@@ -51,6 +51,7 @@
         <activity android:name=".material.MyDatePickerActivity"/>
         <activity android:name=".material.MyRadioButtonActivity"/>
         <activity android:name=".material.MySliderActivity"/>
+        <activity android:name=".material.MySnackbarActivity"/>
 
         <service android:name=".account.MyService">
             <intent-filter>

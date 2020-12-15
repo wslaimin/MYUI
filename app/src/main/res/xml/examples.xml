@@ -133,6 +133,11 @@
                     <text>Slider</text>
                     <activity>com.lm.myui_demo.material.MySliderActivity</activity>
                 </example>
+                <example>
+                    <drawable>icon_snackbar</drawable>
+                    <text>Snackbar</text>
+                    <activity>com.lm.myui_demo.material.MySnackbarActivity</activity>
+                </example>
             </children>
         </example>
     </children>
