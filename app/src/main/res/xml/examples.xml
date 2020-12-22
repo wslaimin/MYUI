@@ -76,12 +76,18 @@
                 <example>
                     <drawable>icon_sheet</drawable>
                     <text>BottomSheet</text>
-                    <activity>com.lm.myui_demo.material.MyBottomSheetBehaviorActivity</activity>
-                </example>
-                <example>
-                    <drawable>icon_sheet</drawable>
-                    <text>BottomSheetDialog</text>
-                    <activity>com.lm.myui_demo.material.MyBottomSheetDialogActivity</activity>
+                    <children>
+                        <example>
+                            <drawable>icon_sheet</drawable>
+                            <text>BottomSheetBehavior</text>
+                            <activity>com.lm.myui_demo.material.MyBottomSheetBehaviorActivity</activity>
+                        </example>
+                        <example>
+                            <drawable>icon_sheet</drawable>
+                            <text>BottomSheetDialog</text>
+                            <activity>com.lm.myui_demo.material.MyBottomSheetDialogActivity</activity>
+                        </example>
+                    </children>
                 </example>
                 <example>
                     <drawable>icon_material</drawable>
@@ -147,6 +153,11 @@
                     <drawable>icon_tab</drawable>
                     <text>TabLayout</text>
                     <activity>com.lm.myui_demo.material.MyTabLayoutActivity</activity>
+                </example>
+                <example>
+                    <drawable>icon_text</drawable>
+                    <text>TextField</text>
+                    <activity>com.lm.myui_demo.material.MyTextFieldActivity</activity>
                 </example>
             </children>
         </example>
