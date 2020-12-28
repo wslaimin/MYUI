@@ -8,6 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="toolbarStyle">@style/toolbarStyle</item>
         <item name="actionBarTheme">@style/actionBarTheme</item>
+        <item name="listMenuViewStyle">@style/listMenuViewStyle</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
     </style>
 
     <style name="actionBarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
@@ -24,6 +31,10 @@
 
     <style name="toolbarStyle" parent="@style/Widget.AppCompat.Toolbar">
         <item name="titleTextColor">@android:color/white</item>
+    </style>
+
+    <style name="listMenuViewStyle" parent="Base.Widget.AppCompat.ListMenuView">
+        <item name="subMenuArrow">@drawable/icon_sub_menu</item>
     </style>
 
     <style name="Widget.MaterialComponents.Light.ActionBar.Solid.MenuAction">
@@ -52,5 +63,13 @@
 
     <style name="TextInputOutlined">
         <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+    </style>
+
+    <style name="WhiteTitleExpanded">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="WhiteTitleCollapsed">
+        <item name="android:textColor">@android:color/white</item>
     </style>
 </resources>

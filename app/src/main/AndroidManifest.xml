@@ -37,7 +37,6 @@
         <activity android:name=".MyGuideActivity" />
         <activity android:name=".account.MyAccountActivity" />
         <activity android:name=".account.MyLoginActivity" />
-        <activity android:name=".material.MaterialActivity" />
         <activity android:name=".material.MyBottomAppBarActivity" />
         <activity android:name=".material.MyBottomNavigationActivity" />
         <activity android:name=".material.MyBottomSheetBehaviorActivity" />
@@ -55,6 +54,9 @@
         <activity android:name=".material.MySwitchActivity"/>
         <activity android:name=".material.MyTabLayoutActivity"/>
         <activity android:name=".material.MyTextFieldActivity"/>
+        <activity android:name=".material.MyTopAppBarActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
 
         <service android:name=".account.MyService">
             <intent-filter>
