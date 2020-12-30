@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import androidx.appcompat.widget.AppCompatButton;
 
 /**
- * 圆角按钮
+ * Round Button
  * {@attr MyRound}
  *
  * @author TFly

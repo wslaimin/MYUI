@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.appbar.MaterialToolbar;
-import com.lm.myui.widget.recycler.MyRecyclerViewDivider;
+import com.lm.myui.widget.recyclerview.adapter.MyRecyclerViewDivider;
 import com.lm.myui_demo.MyAdapter;
 import com.lm.myui_demo.R;
 import java.util.ArrayList;

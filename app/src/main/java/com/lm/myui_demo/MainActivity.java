@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.lm.myui.widget.recycler.MyRecyclerViewDivider;
+import com.lm.myui.widget.recyclerview.adapter.MyRecyclerViewDivider;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {

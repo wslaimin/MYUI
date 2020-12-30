@@ -1,68 +1,68 @@
 package com.lm.myui.widget.round;
 
 /**
- * 圆角功能接口
+ * Round interface
  *
  * @author TFly
  * @github https://github.com/wslaimin/MYUI.git
  */
 public interface MyIRoundView {
     /**
-     * 设置左上角圆角半径
+     * set top left radius
      *
-     * @param radius 圆角半径
+     * @param radius desired size in px
      */
     void setTopLeftRadius(float radius);
 
     float getTopLeftRadius();
 
     /**
-     * 设置右上角圆角半径
+     * set top right radius
      *
-     * @param radius 圆角半径
+     * @param radius desired size in px
      */
     void setTopRightRadius(float radius);
 
     float getTopRightRadius();
 
     /**
-     * 设置右下角圆角半径
+     * set bottom right radius
      *
-     * @param radius 圆角半径
+     * @param radius desired size in px
      */
     void setBottomRightRadius(float radius);
 
     float getBottomRightRadius();
 
     /**
-     * 设置左下角圆角半径
+     * set bottom left radius
      *
-     * @param radius 圆角半径
+     * @param radius desired size in px
      */
     void setBottomLeftRadius(float radius);
 
     float getBottomLeftRadius();
 
     /**
-     * 设置角圆角半径
+     * set radius for all corners
      *
-     * @param radius 圆角半径
+     * @param radius desired size in px
      */
     void setRadius(float radius);
 
     /**
-     * 设置描边宽度
+     * stroke width
      *
-     * @param width 宽度
+     * @param width desired size in px
      */
     void setStrokeWidth(float width);
 
     float getStrokeWidth();
 
     /**
-     * 设置描边颜色
+     * stroke color
      *
-     * @param color 颜色
+     * @param color a color value in the form 0xAARRGGBB
      */
     void setStrokeColor(int color);
 

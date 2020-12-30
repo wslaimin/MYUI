@@ -50,32 +50,16 @@ public class MyBubbleView extends View {
         invalidate();
     }
 
-    /**
-     * 设置气泡颜色
-     *
-     * @param color 气泡颜色
-     */
     public void setColor(int color){
         this.color=color;
         invalidate();
     }
 
-    /**
-     * 设置气泡文本颜色
-     *
-     * @param color 文本颜色
-     */
     public void setTextColor(int color){
         textColor=color;
         invalidate();
     }
 
-    /**
-     * 设置气泡文本大小
-     *
-     * @param unit size单位
-     * @param size 文本大小
-     */
     public void setTextSize(int unit,int size){
         textSize= (int)TypedValue.applyDimension(unit,size,getResources().getDisplayMetrics());
         paint.setTextSize(textSize);

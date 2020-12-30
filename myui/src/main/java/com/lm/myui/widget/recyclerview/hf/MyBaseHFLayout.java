@@ -1,4 +1,4 @@
-package com.lm.myui.widget.recycler.hf;
+package com.lm.myui.widget.recyclerview.hf;
 
 import android.content.Context;
 import android.util.AttributeSet;

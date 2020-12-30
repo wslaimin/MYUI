@@ -5,15 +5,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import com.lm.myui.widget.recycler.MyBaseAdapter;
-import com.lm.myui.widget.recycler.MyViewHolder;
+import com.lm.myui.widget.recyclerview.adapter.MyBaseAdapter;
+import com.lm.myui.widget.recyclerview.adapter.MyViewHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyExampleAdapter extends MyBaseAdapter<List<MyExampleItem>> {
+public class MyExampleAdapter extends MyBaseAdapter {
+    private List<MyExampleItem> data;
 
     public MyExampleAdapter(List<MyExampleItem> data) {
-        super(data);
+        this.data = data;
     }
 
     @Override
@@ -46,6 +47,11 @@ public class MyExampleAdapter extends MyBaseAdapter<List<MyExampleItem>> {
                 }
             }
         });
+    }
+
+    @Override
+    public int getItemCount() {
+        return data.size();
     }
 
     @Override

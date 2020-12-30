@@ -9,31 +9,31 @@ import android.view.ViewGroup;
 import com.lm.myui.R;
 
 /**
- * View容器，横向布局，自动换行
+ * FlowLayout wraps content automatically
  * {@attr MyUnevenLayout}
  *
  * @author TFly
  * @github https://github.com/wslaimin/MYUI.git
  */
-public class MyUnevenLayout extends ViewGroup {
+public class MyFlowLayout extends ViewGroup {
     private int mHorizontalSpace;
     private int mVerticalSpace;
 
-    public MyUnevenLayout(Context context) {
+    public MyFlowLayout(Context context) {
         this(context, null);
     }
 
-    public MyUnevenLayout(Context context, AttributeSet attrs) {
+    public MyFlowLayout(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public MyUnevenLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MyFlowLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initFromAttrs(context, attrs);
     }
 
     @TargetApi(21)
-    public MyUnevenLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public MyFlowLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         initFromAttrs(context, attrs);
     }

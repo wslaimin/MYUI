@@ -1,4 +1,4 @@
-package com.lm.myui.widget.recycler;
+package com.lm.myui.widget.recyclerview.adapter;
 
 import android.view.View;
 import androidx.annotation.NonNull;
@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 减少模板代码，避免重复创建RecyclerView.ViewHolder子类
+ * powerful subclass of {@link RecyclerView.ViewHolder}
  *
  * @author TFly
  * @github https://github.com/wslaimin/MYUI.git
@@ -21,9 +21,9 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
     }
 
     /**
-     * 获取view
+     * finds the first descendant view with the given ID
      *
-     * @param id view id
+     * @param id the ID to search for
      * @return view
      */
     public <T extends View> T findViewById(int id) {

@@ -1,26 +1,22 @@
-package com.lm.myui.widget.recycler;
+package com.lm.myui.widget.recyclerview.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
 /**
- * 减少模板代码，子类只需重写onBindViewHolder(MyBaseVH,int)
+ * powerful subclass of {@link RecyclerView.Adapter<MyViewHolder>}
  *
  * @author TFly
  * @github https://github.com/wslaimin/MYUI.git
  */
-public abstract class MyBaseAdapter<T extends List> extends RecyclerView.Adapter<MyViewHolder> {
+public abstract class MyBaseAdapter extends RecyclerView.Adapter<MyViewHolder> {
     protected LayoutInflater inflater;
-    protected T data;
     protected Context context;
-
-    public MyBaseAdapter(T data){
-        this.data=data;
-    }
 
     @NonNull
     @Override
@@ -35,13 +31,8 @@ public abstract class MyBaseAdapter<T extends List> extends RecyclerView.Adapter
     @Override
     public abstract void onBindViewHolder(@NonNull MyViewHolder holder, int position);
 
-    @Override
-    public int getItemCount() {
-        return data.size();
-    }
-
     /**
-     * 子类实现，获取layout id
+     * get layout id for specific view type
      * @param viewType view类型
      * @return layout id
      */

@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import androidx.appcompat.widget.AppCompatTextView;
 
 /**
- * 圆角文本
+ * Round TextView
  * {@attr MyRound}
  *
  * @author TFly

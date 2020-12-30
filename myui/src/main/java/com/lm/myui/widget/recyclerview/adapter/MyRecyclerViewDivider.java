@@ -1,4 +1,4 @@
-package com.lm.myui.widget.recycler;
+package com.lm.myui.widget.recyclerview.adapter;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
- * RecyclerView分割线，支持GridLayoutManager的横向和纵向分割线，支持LinearLayoutManager的横向分割线
+ * divider for {@link RecyclerView},supports {@link GridLayoutManager} and {@link LinearLayoutManager}
  *
  * @author TFly
  * @github https://github.com/wslaimin/MYUI.git

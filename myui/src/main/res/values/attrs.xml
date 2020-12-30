@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--水平距离-->
+    <!--horizontal space-->
     <attr name="horizontalSpace" format="dimension" />
-    <!--垂直距离-->
+    <!--vertical space-->
     <attr name="verticalSpace" format="dimension" />
 
     <declare-styleable name="MyUnevenLayout">
@@ -12,34 +12,34 @@
 
     <declare-styleable name="MyIndexBar">
         <attr name="verticalSpace" />
-        <!--未被选中文本颜色-->
+        <!--unselected color-->
         <attr name="unSelectedColor" format="color" />
-        <!--选中文本颜色-->
+        <!--selected color-->
         <attr name="selectedColor" format="color" />
-        <!--文本大小-->
+        <!--text size-->
         <attr name="android:textSize" />
-        <!--索引数组-->
+        <!--displayed text array -->
         <attr name="indexs" format="reference" />
-        <!--索引位置-->
+        <!--gravity of text array displayed in MyIndexBar-->
         <attr name="android:gravity" />
-        <!--标识颜色-->
+        <!--indicator color of selected index-->
         <attr name="indicatorColor" format="color" />
     </declare-styleable>
 
     <declare-styleable name="MyRound">
-        <!--左上角圆角半径-->
+        <!--top left radius-->
         <attr name="android:topLeftRadius" />
-        <!--右上角圆角半径-->
+        <!--top right radius-->
         <attr name="android:topRightRadius" />
-        <!--左下角圆角半径-->
+        <!--bottom left radius-->
         <attr name="android:bottomLeftRadius" />
-        <!--右下角圆角半径-->
+        <!--bottom right radius-->
         <attr name="android:bottomRightRadius" />
-        <!--描边颜色-->
+        <!--stroke color-->
         <attr name="strokeColor" format="color" />
-        <!--描边宽度-->
+        <!--stroke width-->
         <attr name="strokeWidth" format="dimension" />
-        <!--所有圆角半径-->
+        <!--all corners radius-->
         <attr name="radius" format="dimension" />
     </declare-styleable>
 </resources>

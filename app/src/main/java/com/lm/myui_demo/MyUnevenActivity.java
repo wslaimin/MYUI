@@ -5,14 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import com.lm.myui.widget.MyUnevenLayout;
+import com.lm.myui.widget.MyFlowLayout;
 import com.lm.myui.widget.round.MyRoundTextView;
 import java.util.Random;
 
 public class MyUnevenActivity extends AppCompatActivity {
     String str="A fool thinks himself to be wise but a wise man knows himself to be a fool";
     String[] strings;
-    MyUnevenLayout unevenLayout;
+    MyFlowLayout unevenLayout;
     Random random;
 
     @Override

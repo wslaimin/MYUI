@@ -12,9 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.airbnb.lottie.LottieAnimationView;
-import com.lm.myui.widget.recycler.MyRecyclerViewDivider;
-import com.lm.myui.widget.recycler.hf.MyBaseHFLayout;
-import com.lm.myui.widget.recycler.hf.MyHFRecyclerView;
+import com.lm.myui.widget.recyclerview.adapter.MyRecyclerViewDivider;
+import com.lm.myui.widget.recyclerview.hf.MyBaseHFLayout;
+import com.lm.myui.widget.recyclerview.hf.MyHFRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;

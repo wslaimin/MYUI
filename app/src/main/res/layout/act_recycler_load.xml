@@ -39,11 +39,11 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.lm.myui.widget.recycler.hf.MyHFRecyclerView
+    <com.lm.myui.widget.recyclerview.hf.MyHFRecyclerView
         android:id="@+id/hf"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    </com.lm.myui.widget.recycler.hf.MyHFRecyclerView>
+    </com.lm.myui.widget.recyclerview.hf.MyHFRecyclerView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,9 +1,9 @@
 package com.lm.myui.widget.guider;
 
 /**
- * 偏移量
- * dx正值，向右偏移
- * dy正值，向下偏移
+ * delta in x axis or y axis
+ * positive dx is offset to right,negative otherwise
+ * positive dy is offset to bottom,negative otherwise
  */
 public class MyOffset {
     int dx, dy;

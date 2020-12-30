@@ -13,9 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.lm.myui.widget.recycler.MyBaseAdapter;
-import com.lm.myui.widget.recycler.MyViewHolder;
-import com.lm.myui.widget.recycler.MyRecyclerViewDivider;
+import com.lm.myui.widget.recyclerview.adapter.MyBaseAdapter;
+import com.lm.myui.widget.recyclerview.adapter.MyViewHolder;
+import com.lm.myui.widget.recyclerview.adapter.MyRecyclerViewDivider;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,17 +30,17 @@ public class MyRecyclerActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_recycler);
-        recyclerView=findViewById(R.id.recycler);
-        list=new ArrayList<>();
-        for(int i=0;i<60;i++){
-            list.add("test"+i);
+        recyclerView = findViewById(R.id.recycler);
+        list = new ArrayList<>();
+        for (int i = 0; i < 60; i++) {
+            list.add("test" + i);
         }
-        adapter=new Adapter(list);
+        adapter = new Adapter(list);
         recyclerView.setAdapter(adapter);
 
-        layoutManager=new LinearLayoutManager(this);
+        layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        MyRecyclerViewDivider divider=new MyRecyclerViewDivider(Color.BLUE);
+        MyRecyclerViewDivider divider = new MyRecyclerViewDivider(Color.BLUE);
         divider.setHorizontalSize(30);
         divider.setVerticalSize(20);
         recyclerView.addItemDecoration(divider);
@@ -49,22 +49,22 @@ public class MyRecyclerActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.orientation,menu);
-        if(layoutManager instanceof GridLayoutManager){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.orientation, menu);
+        if (layoutManager instanceof GridLayoutManager) {
             menu.getItem(0).setVisible(false);
             menu.getItem(1).setVisible(false);
-        }else{
+        } else {
             menu.getItem(0).setVisible(true);
             menu.getItem(1).setVisible(true);
         }
-        this.menu=menu;
+        this.menu = menu;
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.vertical:
                 adapter.setOrientation(RecyclerView.VERTICAL);
                 layoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -76,10 +76,10 @@ public class MyRecyclerActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
                 return true;
             case R.id.type:
-                if(layoutManager instanceof GridLayoutManager){
-                    switchManager("linear",item);
-                }else {
-                    switchManager("grid",item);
+                if (layoutManager instanceof GridLayoutManager) {
+                    switchManager("linear", item);
+                } else {
+                    switchManager("grid", item);
                 }
                 return true;
             default:
@@ -88,42 +88,48 @@ public class MyRecyclerActivity extends AppCompatActivity {
 
     }
 
-    private void switchManager(String str,MenuItem item){
-        if("grid".equals(str)){
+    private void switchManager(String str, MenuItem item) {
+        if ("grid".equals(str)) {
             item.setTitle("linear");
             layoutManager = new GridLayoutManager(this, 3);
             recyclerView.setLayoutManager(layoutManager);
-            adapter=new Adapter(list);
+            adapter = new Adapter(list);
             recyclerView.setAdapter(adapter);
             menu.getItem(0).setVisible(false);
             menu.getItem(1).setVisible(false);
-        }else{
+        } else {
             item.setTitle("grid");
-            layoutManager=new LinearLayoutManager(this);
+            layoutManager = new LinearLayoutManager(this);
             recyclerView.setLayoutManager(layoutManager);
-            adapter=new Adapter(list);
+            adapter = new Adapter(list);
             recyclerView.setAdapter(adapter);
             menu.getItem(0).setVisible(true);
             menu.getItem(1).setVisible(true);
         }
     }
 
-    static class Adapter extends MyBaseAdapter<List<String>> {
-        int orientation=RecyclerView.VERTICAL;
+    static class Adapter extends MyBaseAdapter {
+        int orientation = RecyclerView.VERTICAL;
+        List<String> data;
 
         Adapter(List<String> data) {
-            super(data);
+            this.data = data;
         }
 
         @Override
         public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-            TextView textView=holder.findViewById(R.id.text);
+            TextView textView = holder.findViewById(R.id.text);
             textView.setText(data.get(position));
-            if(orientation==RecyclerView.HORIZONTAL){
+            if (orientation == RecyclerView.HORIZONTAL) {
                 textView.setLayoutParams(new ViewGroup.LayoutParams(120, ViewGroup.LayoutParams.MATCH_PARENT));
-            }else{
-                textView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,120));
+            } else {
+                textView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 120));
             }
+        }
+
+        @Override
+        public int getItemCount() {
+            return data.size();
         }
 
         @Override
@@ -131,8 +137,8 @@ public class MyRecyclerActivity extends AppCompatActivity {
             return R.layout.item;
         }
 
-        void setOrientation(int orientation){
-            this.orientation=orientation;
+        void setOrientation(int orientation) {
+            this.orientation = orientation;
         }
     }
 }

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 列表索引条
+ * view for index quickly
  * {@attr MyIndexBar}
  *
  * @author TFly
@@ -69,9 +69,9 @@ public class MyIndexBar extends View {
     }
 
     /**
-     * 设置文本大小
+     * set text size
      *
-     * @param size 文本大小
+     * @param size desired size in px
      */
     public void setTextSize(int size) {
         if (textSize == size) {
@@ -83,18 +83,18 @@ public class MyIndexBar extends View {
     }
 
     /**
-     * 获取文本大小
+     * get text size
      *
-     * @return 文本大小
+     * @return size in px
      */
     public float getTextSize() {
         return textSize;
     }
 
     /**
-     * 设置文本颜色
+     * set unselected text color
      *
-     * @param color 文本颜色
+     * @param color a color value in the form 0xAARRGGBB
      */
     public void setUnSelectedColor(int color) {
         if (color == unSelectedColor) {
@@ -105,18 +105,18 @@ public class MyIndexBar extends View {
     }
 
     /**
-     * 获取文本颜色
+     * get unselected text color
      *
-     * @return 文本颜色
+     * @return a color value in the form 0xAARRGGBB
      */
     public int getUnSelectedColor() {
         return unSelectedColor;
     }
 
     /**
-     * 设置选中文本颜色
+     * set selected text color
      *
-     * @param color 文本颜色
+     * @param color a color value in the form 0xAARRGGBB
      */
     public void setSelectedColor(int color) {
         if (color == selectedColor) {
@@ -127,27 +127,27 @@ public class MyIndexBar extends View {
     }
 
     /**
-     * 获取选中文本颜色
+     * get selected text color
      *
-     * @return 文本颜色
+     * @return a color value in the form 0xAARRGGBB
      */
     public int getSelectedColor() {
         return selectedColor;
     }
 
     /**
-     * 获取垂直距离
+     * get vertical space between text
      *
-     * @return 距离
+     * @return dimension in px
      */
     public float getVerticalSpace() {
         return verticalSpace;
     }
 
     /**
-     * 设置垂直距离
+     * set vertical space between text
      *
-     * @param space 距离
+     * @param space dimension in px
      */
     public void setVerticalSpace(float space) {
         if (verticalSpace == space) {
@@ -158,26 +158,18 @@ public class MyIndexBar extends View {
     }
 
     /**
-     * 获取索引列表
+     * get index text list
      *
-     * @return 索引列表
+     * @return index text list
      */
     public List<String> getIndexs() {
         return indexs;
     }
 
-    public View getBubbleView() {
-        return bubbleView;
-    }
-
-    public void setBubbleView(View view) {
-        this.bubbleView = view;
-    }
-
     /**
-     * 设置索引列表
+     * set displayed text list
      *
-     * @param list 索引列表
+     * @param list text list
      */
     public void setIndexs(List<String> list) {
         indexs = list;
@@ -190,14 +182,31 @@ public class MyIndexBar extends View {
         requestLayout();
     }
 
+    /**
+     *
+     * @return bubble view
+     */
+    public View getBubbleView() {
+        return bubbleView;
+    }
+
+    /**
+     * set bubble view
+     *
+     * @param view custom bubble view
+     */
+    public void setBubbleView(View view) {
+        this.bubbleView = view;
+    }
+
     public int getGravity() {
         return gravity;
     }
 
     /**
-     * 设置文本Gravity
+     * set gravity of text in MyIndexBar
      *
-     * @param gravity gravity
+     * @param gravity value of {@link Gravity}
      */
     public void setGravity(int gravity) {
         if (this.gravity == gravity) {
@@ -208,28 +217,28 @@ public class MyIndexBar extends View {
     }
 
     /**
-     * 获取索引监听器
+     * get index listener
      *
-     * @return 监听器
+     * @return listener
      */
     public IndexListener getIndexListener() {
         return listener;
     }
 
     /**
-     * 设置索引监听器
+     * set index listener
      *
-     * @param listener 监听器
+     * @param listener instance of {@link IndexListener}
      */
     public void setIndexListener(IndexListener listener) {
         this.listener = listener;
     }
 
     /**
-     * 获取索引文本
+     * get text at specific position
      *
-     * @param pos 索引位置
-     * @return 索引文本
+     * @param pos position in 0 to indexs length
+     * @return text at specific position
      */
     public String getIndexStr(int pos) {
         if (indexs == null || pos < 0 || pos >= indexs.size()) {
@@ -239,7 +248,9 @@ public class MyIndexBar extends View {
     }
 
     /**
-     * @param color 设置标识颜色
+     * set indicator color of selected index
+     *
+     * @param color a color value in the form 0xAARRGGBB
      */
     public void setIndicatorColor(int color) {
         indicatorColor = color;
@@ -460,18 +471,16 @@ public class MyIndexBar extends View {
     }
 
     /**
-     * 索引监听器
+     * listener for index changed
      */
     public interface IndexListener {
         /**
-         * 选中索引回调
-         *
-         * @param position 索引位置
+         * @param position selected position
          */
         void touchIndex(int position);
 
         /**
-         * 索引结束回调
+         * called when touch action is up
          */
         void touchOver();
     }

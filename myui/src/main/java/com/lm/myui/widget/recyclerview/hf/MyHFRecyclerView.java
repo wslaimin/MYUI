@@ -1,11 +1,9 @@
-package com.lm.myui.widget.recycler.hf;
+package com.lm.myui.widget.recyclerview.hf;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewParent;
-import android.view.animation.LinearInterpolator;
-
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.appbar.AppBarLayout;

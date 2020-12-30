@@ -33,23 +33,23 @@ public class MyGuideFocus {
     }
 
     /**
-     * @return 获取焦点目标
+     * @return get focus target rect
      */
     public Rect getFocusTarget() {
         return focusTarget;
     }
 
     /**
-     * @return 焦点View
+     * @return focus target view
      */
     public View getFocusView() {
         return focusView;
     }
 
     /**
-     * 设置焦点View
+     * set focus view
      *
-     * @param view 焦点View
+     * @param view desired view to focus
      */
     public void setFocusView(View view) {
         focusView = view;
@@ -68,37 +68,46 @@ public class MyGuideFocus {
     }
 
     /**
-     * @return 引导内容
+     * @return guide contents
      */
     public List<MyGuideContent> getContents() {
         return contents;
     }
 
     /**
-     * 添加引导内容
+     * add guide content
      *
-     * @param content 引导内容
+     * @param content instance of {@link MyGuideContent}
      */
     public void addGuideContent(MyGuideContent content) {
         contents.add(content);
     }
 
     /**
-     * @return 点击状态
+     * @return whether focus target is touchable
      */
     public boolean isTouchable() {
         return touchable;
     }
 
     /**
-     * 设置点击状态
+     * set the touchable status of focus target
      *
-     * @param bool 状态
+     * @param bool true if this view is touchable, false otherwise
      */
     public void setTouchable(boolean bool) {
         touchable = bool;
     }
 
+    /**
+     * normal focus target size is the same with target view.
+     * set additional padding to each edge can scale or shrink focus target.
+     *
+     * @param left the left padding in pixels
+     * @param top the top padding in pixels
+     * @param right the right padding in pixels
+     * @param bottom the bottom padding in pixels
+     */
     public void setPadding(int left, int top, int right, int bottom) {
         paddingLeft = left;
         paddingRight = right;
@@ -110,16 +119,16 @@ public class MyGuideFocus {
     }
 
     /**
-     * @return 焦点区域形状
+     * @return get focus shape
      */
     public Shape getShape() {
         return shape;
     }
 
     /**
-     * 设置焦点区域形状
+     * set focus shape
      *
-     * @param shape
+     * @param shape instance of {@link Shape}
      */
     public void setShape(Shape shape) {
         this.shape = shape;

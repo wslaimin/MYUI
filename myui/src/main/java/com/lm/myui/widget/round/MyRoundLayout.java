@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 /**
- * 圆角容器
+ * Round container for all views
  * {@attr MyRound}
  *
  * @author TFly
