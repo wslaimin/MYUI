@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
+//TODO: change drawable,text,activity to example's attributes ?
 public class MyXmlParser {
     static MyExampleItem parse(Context context) throws IOException, XmlPullParserException {
         Stack<MyExampleItem> stack = new Stack<>();
